@@ -13,7 +13,7 @@ typedef struct duration {
 }Duration;
 
 //define structure for record data
-typedef struct record{
+typedef struct record {
 	char Artist[20];
 	char AlbumTitle[30];
 	char SongTitle[30];
@@ -25,11 +25,22 @@ typedef struct record{
 
 typedef struct node {
 	Record record; //record struct data
-	struct Node *pNext; //pointer to next song node
-	struct Node *pPrev;
+	struct node* pNext; //pointer to next song node
+	struct node* pPrev;
 }Node;
 
 int displayMenu(void);
 
-void loadMusic(void);
+void loadMusic(FILE* input);
+
+char* myStrtok(char* buffer, char delim);
+
 Node* createNode(char* input_data);
+
+Duration convertDuration(char* input);
+
+void initList(Node** pList);
+
+void doublyLinkList(Node** pList, char* buffer);
+
+void printList(Node* pList);
